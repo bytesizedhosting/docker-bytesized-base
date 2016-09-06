@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+PUID=${PUID:-1001}
+PGID=${PGID:-1000}
+
+if [ ! "$(id -g bysh-engine)" -eq "$PGID" ]; then groupmod -o -g "$PGID" bysh-engine; fi
+
+if [ ! "$(id -u bysh-engine)" -eq "$PUID" ];
+  echo "Setting UID to '$PUID'"
+  then usermod -o -u "$PUID" bysh-engine
+else
+  echo "UID already set correctly"
+fi
+
+chown bysh-engine:bysh-engine /config
+chown bysh-engine:bysh-engine /data
