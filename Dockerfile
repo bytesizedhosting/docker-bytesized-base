@@ -11,7 +11,7 @@ RUN tar -xvf /s6-overlay-amd64.tar.gz
 
 RUN mkdir -p /config /media /data
 
-RUN useradd -U -d /config -s /bin/false bysh-engine
+RUN useradd -U -d /config -s /bin/false bytesized
 
 RUN rm -rf /var/cache/apk/* /tmp/* /s6-overlay-amd64.tar.gz
 ADD /static /
